@@ -21,8 +21,7 @@
 
 - (IBAction)buttonTapped:(UIButton *)sender {
     [self didSaveCatFact:self.catFactsLabel.text];
-    
-    self.saved = YES;
+
 }
 
 -(void)didSaveCatFact:(NSString *)fact {
@@ -31,7 +30,7 @@
         
         NSMutableArray *array = [[NSMutableArray alloc] init];
         
-        NSMutableArray *userDefaultsArray = [[NSUserDefaults standardUserDefaults] objectForKey:@"factsArray"];
+        NSMutableArray *userDefaultsArray = [[[NSUserDefaults standardUserDefaults] objectForKey:@"factsArray"] mutableCopy];
         
         [array addObjectsFromArray:userDefaultsArray];
         
@@ -41,7 +40,9 @@
         
     } else {
         
-        NSMutableArray *array = [[NSMutableArray alloc] initWithObjects:fact, nil];
+        NSMutableArray *array = [[NSMutableArray alloc] init];
+        
+        [array addObject:fact];
         
         [[NSUserDefaults standardUserDefaults] setObject:array forKey:@"factsArray"];
     }

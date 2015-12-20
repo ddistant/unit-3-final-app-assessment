@@ -23,6 +23,4 @@
 
 @property (weak, nonatomic) id<CatFactsTableViewCellDelegate>delegate;
 
-@property (nonatomic) BOOL saved;
-
 @end

@@ -19,12 +19,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
     self.savedFacts = [[NSMutableArray alloc] init];
     
     [self loadSavedFacts];
@@ -34,9 +28,9 @@
 -(void) loadSavedFacts {
     if ([[NSUserDefaults standardUserDefaults] objectForKey:@"factsArray"] != nil) {
         
-        NSMutableArray *array = [[NSMutableArray alloc] initWithArray:[[NSUserDefaults standardUserDefaults] objectForKey:@"factsArray"]];
+        NSMutableArray *userDefaultsArray = [[[NSUserDefaults standardUserDefaults] objectForKey:@"factsArray"] mutableCopy];
         
-        [self.savedFacts addObjectsFromArray:array];
+        self.savedFacts = userDefaultsArray;
         
         [self.tableView reloadData];
      
@@ -91,7 +85,7 @@
 
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
+    
     return YES;
 }
 
@@ -102,12 +96,14 @@
         // Delete the row from the data source
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
         
-        [self.savedFacts removeObjectAtIndex:indexPath.row];
+        NSMutableArray *factsArray = [[[NSUserDefaults standardUserDefaults]objectForKey:@"factsArray"] mutableCopy];
         
-        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"factsArray"];
-        [[NSUserDefaults standardUserDefaults] setObject:self.savedFacts forKey:@"factsArray"];
+        [factsArray removeObjectAtIndex:indexPath.row];
+        [[NSUserDefaults standardUserDefaults] setObject:factsArray forKey:@"factsArray"];
         
-        [self.tableView reloadData];
+        self.savedFacts = factsArray;
+        
+        [self loadSavedFacts];
     }   
 }
 

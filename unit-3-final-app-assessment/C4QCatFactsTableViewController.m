@@ -75,13 +75,12 @@
     UIAlertController *alert = [UIAlertController alertControllerWithTitle: nil message:@"Cat fact saved!" preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction* action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-                                                handler:^(UIAlertAction * action) {
-                                                
-                                                    [self.tableView reloadData];
-                                                }];
+                                                handler:^(UIAlertAction * action) {}];
     
     [alert addAction:action];
     [self presentViewController:alert animated:YES completion:nil];
+    
+    [self.tableView reloadData];
 }
 
 
@@ -106,10 +105,12 @@
     
     cell.catFactsLabel.text = self.catFacts[indexPath.row];
     
-    if (cell.saved) {
+    NSMutableArray *factsArray = [[NSUserDefaults standardUserDefaults] objectForKey:@"factsArray"];
+
+    if ([factsArray containsObject:self.catFacts[indexPath.row]]) {
         
-    } else {
-        
+        cell.buttonPlus.hidden = YES;
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
     }
     
     return cell;
