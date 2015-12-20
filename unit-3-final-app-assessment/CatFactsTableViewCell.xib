@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CatFactsTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="48"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XVq-ui-owt">
+                    <rect key="frame" x="289" y="12.5" width="23" height="23"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="23" id="CXF-Yr-t7l"/>
+                        <constraint firstAttribute="height" constant="23" id="aeL-oQ-DoL"/>
+                    </constraints>
+                    <state key="normal" title="Button" image="add_icon"/>
+                    <connections>
+                        <action selector="buttonTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="3fq-qz-icd"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ePx-RU-8gc">
+                    <rect key="frame" x="8" y="8" width="273" height="32"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="XVq-ui-owt" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="2tl-ln-ixm"/>
+                <constraint firstItem="ePx-RU-8gc" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="BEf-Gx-dAo"/>
+                <constraint firstAttribute="bottom" secondItem="ePx-RU-8gc" secondAttribute="bottom" constant="8" id="Ibe-b9-OGg"/>
+                <constraint firstAttribute="trailing" secondItem="XVq-ui-owt" secondAttribute="trailing" constant="8" id="OlH-xR-feV"/>
+                <constraint firstItem="ePx-RU-8gc" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="XqT-9g-Tz0"/>
+                <constraint firstItem="XVq-ui-owt" firstAttribute="leading" secondItem="ePx-RU-8gc" secondAttribute="trailing" constant="8" id="hQA-Z1-gEy"/>
+                <constraint firstItem="ePx-RU-8gc" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="wA9-1i-Zq8"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="BEf-Gx-dAo"/>
+                </mask>
+            </variation>
+            <connections>
+                <outlet property="buttonPlus" destination="XVq-ui-owt" id="VCx-os-GBr"/>
+                <outlet property="catFactsLabel" destination="ePx-RU-8gc" id="1RI-PD-GNL"/>
+            </connections>
+            <point key="canvasLocation" x="195" y="41"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="add_icon" width="23" height="23"/>
+    </resources>
+</document>

@@ -8,7 +8,7 @@
 
 #import "C4QColorPickerViewController.h"
 
-@interface C4QColorPickerViewController ()
+@interface C4QColorPickerViewController () <ColorPickerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *blueButton;
 @property (weak, nonatomic) IBOutlet UIButton *redButton;
@@ -25,5 +25,15 @@
     self.greenButton.backgroundColor = [UIColor greenColor];
     self.redButton.backgroundColor = [UIColor redColor];
 }
+
+- (IBAction)buttonTapped:(UIButton *)sender {
+    [self.delegate userSelectedColor:sender.backgroundColor];
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+-(void)userSelectedColor:(UIColor *)color {
+    NSLog(@"color %@ selected", color);
+}
+
 
 @end

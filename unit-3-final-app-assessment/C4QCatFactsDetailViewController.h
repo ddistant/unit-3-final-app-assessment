@@ -10,4 +10,10 @@
 
 @interface C4QCatFactsDetailViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+
+@property (weak, nonatomic) IBOutlet UILabel *catFactLabel;
+
+@property (nonatomic) NSString *catFact;
+
 @end

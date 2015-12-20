@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AFNetworking/AFNetworking.h>
 
 @interface C4QCatFactsTableViewController : UITableViewController
+
+@property (nonatomic) NSMutableArray *catFacts;
 
 @end
